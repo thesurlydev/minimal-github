@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.surly"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
   mavenCentral()
@@ -20,8 +20,8 @@ val jgitVersion: String = "6.10.0.202406032230-r"
 val junitVersion: String = "5.10.3"
 
 dependencies {
-  implementation("org.kohsuke:github-api:${githubApiVersion}")
-  implementation("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
+  api("org.kohsuke:github-api:${githubApiVersion}")
+  api("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
 
   testImplementation(platform("org.junit:junit-bom:${junitVersion}"))
   testImplementation("org.junit.jupiter:junit-jupiter-api")
@@ -42,7 +42,7 @@ tasks.withType<Test> {
 }
 
 mavenPublishing {
-  coordinates("dev.surly", "minimal-github", "0.1.0")
+  coordinates("dev.surly", "minimal-github", "$version")
   publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
   signAllPublications()
   pom {
